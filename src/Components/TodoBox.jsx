@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Item from './Item';
 import _ from 'lodash';
+import cn from 'classnames';
 
 const TodoBox = () => {
     const [noteValue, setNewNoteValue] = useState('');
@@ -22,6 +23,9 @@ const TodoBox = () => {
         setNewListNotes(newListNotes)
     }
 
+    const activeAddBtn = cn('btn btn-primary',
+        {'disabled': noteValue === ''})
+
     if (listNotes.length > 0) {
         return (
             <div>
@@ -36,7 +40,7 @@ const TodoBox = () => {
                                    onChange={onChangeInput}/>
                         </div>
                         <button type="submit"
-                                className="btn btn-primary"
+                                className={activeAddBtn}
                                 onClick={handleAddNote}>add
                         </button>
                     </form>
@@ -62,7 +66,7 @@ const TodoBox = () => {
                                onChange={onChangeInput}/>
                     </div>
                     <button type="submit"
-                            className="btn btn-primary"
+                            className={activeAddBtn}
                             onClick={handleAddNote}>add
                     </button>
                 </form>
