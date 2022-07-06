@@ -13,7 +13,7 @@ const TodoBox = () => {
 
     const handleAddNote = (e) => {
         e.preventDefault();
-        const newNote = {content: noteValue, id: _.uniqueId()};
+        const newNote = {content: noteValue.trim(), id: _.uniqueId()};
         setNewListNotes([newNote, ...listNotes]);
         setNewNoteValue('')
     };
@@ -24,7 +24,7 @@ const TodoBox = () => {
     }
 
     const activeAddBtn = cn('btn btn-primary',
-        {'disabled': noteValue === ''})
+        {'disabled': noteValue === '' || noteValue.trim() === ''});
 
     if (listNotes.length > 0) {
         return (
