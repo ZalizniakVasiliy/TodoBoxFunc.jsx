@@ -24,7 +24,7 @@ const TodoBox = () => {
     }
 
     const activeAddBtn = cn('btn btn-primary',
-        {'disabled': noteValue === '' || noteValue.trim() === ''});
+        {'disabled': noteValue.trim() === ''});
 
     if (listNotes.length > 0) {
         return (
