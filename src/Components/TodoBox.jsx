@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 const TodoBox = () => {
     const [noteValue, setNewNoteValue] = useState('');
-    const [listNotes, setNewListNote] = useState([]);
+    const [listNotes, setNewListNotes] = useState([]);
 
     const onChangeInput = (e) => {
         setNewNoteValue(e.target.value)
@@ -13,13 +13,13 @@ const TodoBox = () => {
     const handleAddNote = (e) => {
         e.preventDefault();
         const newNote = {content: noteValue, id: _.uniqueId()};
-        setNewListNote([newNote, ...listNotes]);
+        setNewListNotes([newNote, ...listNotes]);
         setNewNoteValue('')
     };
 
     const handleRemoveNote = (taskId) => () => {
         const newListNotes = listNotes.filter(item => item.id !== taskId);
-        setNewListNote(newListNotes)
+        setNewListNotes(newListNotes)
     }
 
     if (listNotes.length > 0) {
